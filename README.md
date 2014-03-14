@@ -23,7 +23,14 @@ require("express-mongoose-docs")(app);
 
 * Step 3
 
-Copy the /docs directory from this [repository] to the /public directory in your Node.js project.
+Copy the '/docs' directory from this [repository] to the '/public' directory in your Node.js project.
+
+
+* Step 4
+
+The Docs web page can be accessed at Your-Base-URL/docs
+
+Example: http://localhost:5000/docs
 
 
 [repository]:https://github.com/nabeel-ahmad/express-mongoose-docs

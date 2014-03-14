@@ -1,7 +1,7 @@
 {
   "name": "express-mongoose-docs",
   "description": "Auto-generated API Documentation for Express and Mongoose based APIs",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "author": {
     "name": "Nabeel Ahmad"
   },
@@ -26,9 +26,5 @@
   },
   "engines": {
     "node": ">= 0.6.6"
-  },
-  "readme": "express-mongoose-docs\r\n=====================\r\n\r\nThis module will take away the pain of writing API and Data Model documentation for your Express & Mongoose based API\r\n",
-  "readmeFilename": "README.md",
-  "_id": "express-mongoose-docs@0.0.2",
-  "_from": "express-mongoose-docs@"
+  }
 }

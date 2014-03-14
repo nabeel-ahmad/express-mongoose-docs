@@ -1,0 +1,31 @@
+{
+  "name": "express-mongoose-docs",
+  "description": "An interface to the Apple Push Notification service for Node.js",
+  "version": "0.0.1",
+  "author": {
+    "name": "Nabeel Ahmad"
+  },  
+  "keywords": [
+    "express",
+    "mongoose",
+    "docs",
+	"documentation",
+	"auto",
+    "generator"    
+  ],
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/argon/node-apn/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/argon/node-apn.git"
+  },
+  "dependencies": {
+    "mongoose": "3.8.1",
+	"underscore": "~1.5.2"
+  },
+  "engines": {
+    "node": ">= 0.6.6"
+  }
+}

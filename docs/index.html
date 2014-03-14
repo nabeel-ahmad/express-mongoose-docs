@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app="docsApp">
+<head>
+    <meta charset="utf-8">
+    <title>Docs</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+    <script>
+        var docsApp = angular.module('docsApp', ['ui.bootstrap']);
+
+        docsApp.controller('DocsCtrl', function ($scope, $http) {
+            $http.get('../api-docs').success(function (data) {
+                $scope.routes = data.routes;
+                $scope.schemas = data.schemas;
+            });
+        });
+    </script>
+</head>
+
+<body ng-controller="DocsCtrl">
+
+    <tabset justified="false">
+        <tab heading="Routes">
+                <table class="table table-striped table-condensed table-hover">
+                    <thead>
+                    <th>Method</th>
+                    <th>Path</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="route in routes | orderBy:'path'">
+                        <td>{{route.method}}</td>
+                        <td>{{route.path}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+        </tab>
+        <tab heading="Data Model">
+
+                <ul>
+                    <li ng-repeat="schema in schemas" id="{{schema.name}}">
+                        <h4>{{schema.name}}</h4>
+                        <table class="table table-striped table-condensed table-hover">
+                            <thead>
+                            <th>Field name</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Possible values</th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="field in schema.fields">
+                                <td>{{field.name}}</td>
+                                <td>
+                                    <a ng-show="field.schema" href="#{{field.name}}">{{field.type}}</a>
+                                    <p ng-show="!field.schema">{{field.type}}</p>
+                                </td>
+                                <td>{{field.required}}</td>
+                                <td>{{field.enumValues}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+
+        </tab>
+    </tabset>
+
+</body>
+</html>

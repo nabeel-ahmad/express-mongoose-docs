@@ -18,7 +18,7 @@ npm install express-mongoose-docs
 Add this line to your app.js file
 
 ```sh
-require("express-mongoose-docs")(app);
+require("express-mongoose-docs")(app, mongoose);
 ```
 
 * Step 3

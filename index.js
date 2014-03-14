@@ -1,15 +1,14 @@
-var mongoose = require("mongoose");
 var _ = require("underscore");
 
-module.exports = function(app) {
+module.exports = function(app, mongoose) {
     app.get('/api-docs', function(req, res) {
         var routes = _.flatten(app.routes);
-        var schemas = generateSchemaDocs();
+        var schemas = generateSchemaDocs(mongoose);
         res.send({routes: routes, schemas: schemas});
     });
 };
 
-function generateSchemaDocs() {
+function generateSchemaDocs(mongoose) {
     var schemas = _.pairs(mongoose.modelSchemas);
     var nestedSchemas = [];
     schemas = _.map(schemas, function (schema) {

@@ -41,9 +41,9 @@ Example: http://localhost:5000/docs
 Screenshots
 ===========
 
-![routes](/screenshots/screenshot1.png "Routes")
+![routes](https://raw.github.com/nabeel-ahmad/express-mongoose-docs/master/screenshots/screenshot1.png "Routes")
 
-![data-model](/screenshots/screenshot2.png "Data Model")
+![data-model](https://raw.github.com/nabeel-ahmad/express-mongoose-docs/master/screenshots/screenshot2.png "Data Model")
 
 
 

@@ -3,7 +3,9 @@ var _ = require("underscore");
 module.exports = function(app, mongoose) {
     app.get('/api-docs', function(req, res) {
         var routes = _.flatten(app.routes);
-        var schemas = generateSchemaDocs(mongoose);
+        var schemas;
+        if(mongoose)
+            schemas = generateSchemaDocs(mongoose);
         res.send({routes: routes, schemas: schemas});
     });
 };

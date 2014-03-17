@@ -1,4 +1,5 @@
 var _ = require("underscore");
+var express = require("express");
 
 module.exports = function(app, mongoose) {
     app.get('/api-docs', function(req, res) {
@@ -8,6 +9,7 @@ module.exports = function(app, mongoose) {
             schemas = generateSchemaDocs(mongoose);
         res.send({routes: routes, schemas: schemas});
     });
+    app.use(express.static('node_modules/express-mongoose-docs/html'));
 };
 
 function generateSchemaDocs(mongoose) {

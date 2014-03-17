@@ -21,22 +21,15 @@ Add these lines to your app.js file
 var docs = require("express-mongoose-docs");
 ```
 
-
 ```sh
-docs(app, mongoose);
+docs(app, mongoose); // If you don't use mongoose you can skip the 2nd param
 ```
-
 
 * Step 3
 
-Copy the '/docs' directory from this [repository] to the '/public' directory in your Node.js project.
+The Docs web page can be accessed at Your-Base-URL/apiDocs
 
-
-* Step 4
-
-The Docs web page can be accessed at Your-Base-URL/docs
-
-Example: http://localhost:5000/docs
+Example: http://localhost:5000/apiDocs
 
 Screenshots
 ===========

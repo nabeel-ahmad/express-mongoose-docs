@@ -1,7 +1,7 @@
 {
   "name": "express-mongoose-docs",
   "description": "Auto-generated API Documentation for Express and Mongoose based APIs",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "author": {
     "name": "Nabeel Ahmad"
   },

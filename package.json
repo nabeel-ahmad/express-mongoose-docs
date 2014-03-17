@@ -1,30 +1,36 @@
 {
-  "name": "express-mongoose-docs",
-  "description": "Auto-generated API Documentation for Express and Mongoose based APIs",
-  "version": "0.1.1",
-  "author": {
-    "name": "Nabeel Ahmad"
-  },
-  "keywords": [
-    "express",
-    "mongoose",
-    "docs",
-    "documentation",
-    "auto",
-    "generator"
-  ],
-  "main": "index.js",
-  "bugs": {
-    "url": "https://github.com/nabeel-ahmad/express-mongoose-docs/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nabeel-ahmad/express-mongoose-docs.git"
-  },
-  "dependencies": {
-    "underscore": "~1.5.2"
-  },
-  "engines": {
-    "node": ">= 0.6.6"
-  }
+    "name": "express-mongoose-docs",
+    "description": "Auto-generated API Documentation for Express and Mongoose based APIs",
+    "version": "0.1.1",
+    "author": {
+        "name": "Nabeel Ahmad"
+    },
+    "keywords": [
+        "express",
+        "mongoose",
+        "api",
+        "docs",
+        "documentation",
+        "auto-generator"
+    ],
+    "main": "index.js",
+    "bugs": {
+        "url": "https://github.com/nabeel-ahmad/express-mongoose-docs/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nabeel-ahmad/express-mongoose-docs.git"
+    },
+    "dependencies": {
+        "underscore": "~1.5.2"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/nabeel-ahmad/express-mongoose-docs/master/LICENSE"
+        }
+    ],
+    "engines": {
+        "node": ">= 0.6.6"
+    }
 }

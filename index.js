@@ -9,7 +9,7 @@ module.exports = function(app, mongoose) {
             schemas = generateSchemaDocs(mongoose);
         res.send({routes: routes, schemas: schemas});
     });
-    app.use(express.static('node_modules/express-mongoose-docs/html'));
+    app.use(express.static(__dirname +'/html'));
 };
 
 function generateSchemaDocs(mongoose) {

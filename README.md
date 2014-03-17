@@ -7,13 +7,13 @@ This module will take away the pain of writing API and Data Model documentation 
 Installation
 --------------
 
-* Step 1
+* Step 1 : Install
 
 ```sh
 npm install express-mongoose-docs
 ```
 
-* Step 2
+* Step 2 : Configure
 
 Add these lines to your app.js file
 
@@ -27,9 +27,7 @@ Make sure the following line comes after all express middleware such as app.use(
 docs(app, mongoose); // If you don't use mongoose you can skip the 2nd param
 ```
 
-* Step 3
-
-That's it. The Docs web page should be accessible at this URL: Your-Base-URL/apiDocs
+That's it. The Docs web page should be accessible at Your-Base-URL/apiDocs
 
 Example: http://localhost:5000/apiDocs
 

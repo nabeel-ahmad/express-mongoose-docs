@@ -5,6 +5,7 @@
     <title>Docs</title>
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.min.js"></script>
@@ -41,30 +42,44 @@
         </tab>
         <tab heading="Data Model" ng-show="schemas">
 
-                <ul>
-                    <li ng-repeat="schema in schemas" id="{{schema.name}}">
-                        <h4>{{schema.name}}</h4>
-                        <table class="table table-striped table-condensed table-hover">
-                            <thead>
-                            <th>Field name</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Possible values</th>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="field in schema.fields">
-                                <td>{{field.name}}</td>
-                                <td>
-                                    <a ng-show="field.schema" href="#{{field.name}}">{{field.type}}</a>
-                                    <p ng-show="!field.schema">{{field.type}}</p>
-                                </td>
-                                <td>{{field.required}}</td>
-                                <td>{{field.enumValues}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                <ul class="nav">
+                    <li ng-repeat="schema in schemas">
+                        <a href="#{{schema.name}}">{{schema.name}}</a>
                     </li>
                 </ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-10">
+            <ul>
+                <li ng-repeat="schema in schemas" id="{{schema.name}}">
+                    <h4>{{schema.name}}</h4>
+                    <table class="table table-striped table-condensed table-bordered table-responsive">
+                        <thead>
+                        <th>Field name</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Enum</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="field in schema.fields">
+                            <td>{{field.name}}</td>
+                            <td>
+                                <a ng-show="field.schema" href="#{{field.name}}">{{field.type}}</a>
+                                <p ng-show="!field.schema">{{field.type}}</p>
+                            </td>
+                            <td>{{field.required}}</td>
+                            <td>{{field.min}}</td>
+                            <td>{{field.max}}</td>
+                            <td>{{field.enumValues}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+            </div>
 
         </tab>
     </tabset>

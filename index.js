@@ -24,7 +24,7 @@ function generateSchemaDocs(mongoose) {
 
     schemas = schemas.concat(nestedSchemas);
     return schemas;
-};
+}
 
 function getSchemaInfo(schema) {
     var nestedSchemas = [];
@@ -52,6 +52,9 @@ function getFieldInfo(path) {
         if (path.options.type instanceof Array && !path.schema)
             field.type = path.options.type[0].name + " []";
     }
+
+    field.min = path.options.min;
+    field.max = path.options.max;
 
     if (path.enumValues && path.enumValues.length > 0)
         field.enumValues = path.enumValues;

@@ -1,0 +1,27 @@
+.text-center {
+    padding-top: 20px;
+}
+.col-xs-12 {
+    background-color: #fff;
+}
+#sidebar {
+    height: 100%;
+    padding-right: 0;
+    padding-top: 20px;
+}
+#sidebar .nav {
+    width: 95%;
+    position:fixed;
+}
+#sidebar li {
+    border:0 #f2f2f2 solid;
+    border-bottom-width:1px;
+}
+
+th, td {
+    max-width: 120px;
+}
+
+ul {
+    list-style-type: none;
+}

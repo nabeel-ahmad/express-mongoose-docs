@@ -12,13 +12,12 @@ module.exports = function(app, mongoose) {
     app.use(express.static(__dirname +'/html'));
 };
 
+var nestedSchemas = [];
+
 function generateSchemaDocs(mongoose) {
     var schemas = _.pairs(mongoose.modelSchemas);
-    var nestedSchemas = [];
     schemas = _.map(schemas, function (schema) {
         var info = getSchemaInfo(schema);
-        if (info.schemas)
-            nestedSchemas = nestedSchemas.concat(info.schemas);
         return info;
     });
 
@@ -27,7 +26,6 @@ function generateSchemaDocs(mongoose) {
 }
 
 function getSchemaInfo(schema) {
-    var nestedSchemas = [];
     var paths = _.map(schema[1].paths, function (path) {
         var info = getFieldInfo(path);
         if (info && info.schema)
@@ -40,7 +38,7 @@ function getSchemaInfo(schema) {
             paths.push({name: virtual.path, type: "Unknown"});
     });
 
-    return {name: schema[0], fields: paths, schemas: nestedSchemas};
+    return {name: schema[0], fields: paths};
 }
 
 function getFieldInfo(path) {

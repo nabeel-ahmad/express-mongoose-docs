@@ -26,18 +26,23 @@
 
     <tabset justified="false">
         <tab heading="Routes">
-                <table class="table table-striped table-condensed table-hover">
-                    <thead>
-                    <th>Method</th>
-                    <th>Path</th>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="route in routes | orderBy:'path'">
-                        <td>{{route.method}}</td>
-                        <td>{{route.path}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <ul>
+                <li ng-repeat="group in routes | orderBy:'group[0]'">
+                    <h3>{{group[0]}}</h3>
+                    <table class="table table-striped table-condensed table-hover">
+                        <thead>
+                        <th style="width: 100px;">Method</th>
+                        <th>Path</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="route in group[1] | orderBy:'path'">
+                            <td>{{route.method}}</td>
+                            <td>{{route.path}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
 
         </tab>
         <tab heading="Data Model" ng-show="schemas">

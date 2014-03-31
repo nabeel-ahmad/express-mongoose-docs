@@ -4,9 +4,13 @@ var express = require("express");
 module.exports = function(app, mongoose) {
     app.get('/api-docs', function(req, res) {
         var routes = _.flatten(app.routes);
+
         routes = _.groupBy(routes, function(route) {
             return route.path.split("/")[1];
         });
+
+        delete routes['api-docs'];
+
         routes = _.pairs(routes);
         var schemas;
         if(mongoose)

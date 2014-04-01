@@ -20,7 +20,7 @@ var baseURL = "http://localhost:5000";
 before(function (done) {
 
     // Add sample routes and start express app
-    app.get("/test1", function() {});
+    app.get("/route1", function() {});
 
     app.listen(5000, done);
 });

@@ -40,22 +40,33 @@ before(function (done) {
 });
 
 describe("docs", function () {
-    it("should get API docs", function (done) {
+
+    it("should return routes", function (done) {
         request("http://localhost:5000")
             .get("/api-docs")
             .expect(200)
             .end(function (err, res) {
                 if (err) return done(err);
 
-                // Routes
                 res.body.should.have.property("routes");
                 res.body.routes.should.be.an.instanceOf(Array).with.length(1);
                 res.body.routes[0][1][0].should.have.properties(["method", "path"]);
 
-                // Schemas
+                done();
+            });
+    });
+
+    it("should return schemas", function (done) {
+        request("http://localhost:5000")
+            .get("/api-docs")
+            .expect(200)
+            .end(function (err, res) {
+                if (err) return done(err);
+
+
                 res.body.should.have.property("schemas");
                 var schemas = res.body.schemas;
-                schemas.should.be.an.instanceOf(Array).with.length(2);
+                schemas.should.be.an.instanceOf(Array).with.length(3);
                 schemas[0].should.have.properties(["name", "fields"]);
                 var fields = schemas[0].fields;
                 fields[0].required.should.be.true;

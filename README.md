@@ -3,7 +3,7 @@ express-mongoose-docs
 
 [![Build Status](https://travis-ci.org/nabeel-ahmad/express-mongoose-docs.svg?branch=master)](https://travis-ci.org/nabeel-ahmad/express-mongoose-docs)
 
-This module will take away the pain of writing API and Data Model documentation for your Express & Mongoose based API
+This module will take away the pain of writing API and Data Model documentation for your Express & Mongoose based REST API.
 
 
 Installation

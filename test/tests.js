@@ -15,10 +15,11 @@ app.use(app.router);
 
 docs(app, mongoose);
 
-
+var baseURL = "http://localhost:5000";
 
 before(function (done) {
 
+    // Add sample routes and start express app
     app.get("/test1", function() {});
 
     app.listen(5000, done);
@@ -26,6 +27,7 @@ before(function (done) {
 
 before(function (done) {
 
+    // Add sample schemas to mongoose
     var NestedSchema = new mongoose.Schema({
         prop1: Number
     });
@@ -42,7 +44,7 @@ before(function (done) {
 describe("docs", function () {
 
     it("should return routes", function (done) {
-        request("http://localhost:5000")
+        request(baseURL)
             .get("/api-docs")
             .expect(200)
             .end(function (err, res) {
@@ -57,17 +59,17 @@ describe("docs", function () {
     });
 
     it("should return schemas", function (done) {
-        request("http://localhost:5000")
+        request(baseURL)
             .get("/api-docs")
             .expect(200)
             .end(function (err, res) {
                 if (err) return done(err);
 
-
                 res.body.should.have.property("schemas");
                 var schemas = res.body.schemas;
                 schemas.should.be.an.instanceOf(Array).with.length(3);
                 schemas[0].should.have.properties(["name", "fields"]);
+
                 var fields = schemas[0].fields;
                 fields[0].required.should.be.true;
                 fields[0].enumValues.should.be.an.instanceOf(Array);

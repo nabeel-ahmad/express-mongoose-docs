@@ -1,23 +1,27 @@
 var _ = require("underscore");
 var express = require("express");
 
-module.exports = function(app, mongoose) {
-    app.get('/api-docs', function(req, res) {
-        var routes = _.flatten(app.routes);
+module.exports = function (app, mongoose) {
+    app.get('/api-docs', function (req, res) {
+        try {
+            var routes = _.flatten(app.routes);
 
-        routes = _.groupBy(routes, function(route) {
-            return route.path.split("/")[1];
-        });
+            routes = _.groupBy(routes, function (route) {
+                return route.path.split("/")[1];
+            });
 
-        delete routes['api-docs'];
+            delete routes['api-docs'];
 
-        routes = _.pairs(routes);
-        var schemas;
-        if(mongoose)
-            schemas = generateSchemaDocs(mongoose);
-        res.send({routes: routes, schemas: schemas});
+            routes = _.pairs(routes);
+            var schemas;
+            if (mongoose)
+                schemas = generateSchemaDocs(mongoose);
+            res.send({routes: routes, schemas: schemas});
+        } catch (e) {
+            res.send(e);
+        }
     });
-    app.use(express.static(__dirname +'/html'));
+    app.use(express.static(__dirname + '/html'));
 };
 
 var nestedSchemas = [];
@@ -41,8 +45,8 @@ function getSchemaInfo(schema) {
         return info;
     });
 
-    _.each(schema[1].virtuals, function(virtual) {
-        if(virtual.path != "id")
+    _.each(schema[1].virtuals, function (virtual) {
+        if (virtual.path != "id")
             paths.push({name: virtual.path, type: "Unknown"});
     });
 

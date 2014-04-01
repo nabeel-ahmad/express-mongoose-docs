@@ -14,13 +14,16 @@ module.exports = function (app, mongoose) {
 
             routes = _.pairs(routes);
             var schemas;
+
             if (mongoose)
                 schemas = generateSchemaDocs(mongoose);
+
             res.send({routes: routes, schemas: schemas});
         } catch (e) {
-            res.send(e);
+            res.send(400, e);
         }
     });
+
     app.use(express.static(__dirname + '/html'));
 };
 

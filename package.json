@@ -5,6 +5,7 @@
     "author": {
         "name": "Nabeel Ahmad"
     },
+    "homepage": "http://nabeel-ahmad.github.io/express-mongoose-docs/",
     "keywords": [
         "express",
         "mongoose",
@@ -29,7 +30,9 @@
         "mongoose": "3.8.8",
         "mocha": "~1.18.2",
         "supertest": "~0.10.0",
-        "should": "~3.2.0"
+        "should": "~3.2.0",
+        "coveralls": "~2.10.0",
+        "istanbul": "~0.2.7"
     },
     "licenses": [
         {

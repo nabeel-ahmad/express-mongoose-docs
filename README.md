@@ -3,6 +3,7 @@ express-mongoose-docs
 
 [![Build Status](https://travis-ci.org/nabeel-ahmad/express-mongoose-docs.svg?branch=master)](https://travis-ci.org/nabeel-ahmad/express-mongoose-docs)
 [![Coverage Status](https://coveralls.io/repos/nabeel-ahmad/express-mongoose-docs/badge.png?branch=master)](https://coveralls.io/r/nabeel-ahmad/express-mongoose-docs?branch=master)
+[![NPM version](https://badge.fury.io/js/express-mongoose-docs.png)](http://badge.fury.io/js/express-mongoose-docs)
 
 This module will take away the pain of writing API and Data Model documentation for your Express & Mongoose based REST API.
 It auto-generates API documentation from the code on runtime so the documentation always stays up to date.

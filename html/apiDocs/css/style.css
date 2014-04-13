@@ -11,7 +11,7 @@
 }
 .sidebar .nav {
     width: 95%;
-    position:fixed;
+    position:relative;
 }
 .sidebar li {
     border:0 #f2f2f2 solid;

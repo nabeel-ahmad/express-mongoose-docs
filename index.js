@@ -34,10 +34,13 @@ module.exports = function (app, mongoose) {
     app.use(express.static(__dirname + '/html'));
 };
 
-var nestedSchemas = [];
+var nestedSchemas;
 
 // Transform mongoose model schemas into a readable format
 function generateSchemaDocs(mongoose) {
+
+    nestedSchemas = [];
+
     // Transform models object to an array
     var schemas = _.pairs(mongoose.modelSchemas);
 

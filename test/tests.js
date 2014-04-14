@@ -67,7 +67,7 @@ describe("docs", function () {
 
                 res.body.should.have.property("schemas");
                 var schemas = res.body.schemas;
-                schemas.should.be.an.instanceOf(Array).with.length(3);
+                schemas.should.be.an.instanceOf(Array).with.length(2);
                 schemas[0].should.have.properties(["name", "fields"]);
 
                 var fields = schemas[0].fields;

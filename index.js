@@ -40,7 +40,7 @@ module.exports = function (app, mongoose) {
 
             res.send({routes: routes, schemas: schemas});
         } catch (e) {
-            res.status(400).send(e);
+            res.send(400,e);
         }
     });
 

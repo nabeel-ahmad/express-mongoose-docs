@@ -3,12 +3,25 @@ var express = require("express");
 
 module.exports = function (app, mongoose) {
 
+
     // Add an API endpoint to be used internally by this module
     app.get('/api-docs', function (req, res) {
         try {
-            // Extract all API routes in one array
-            var routes = _.flatten(app.routes);
-
+            if (app.routes) {
+                // Extract all API routes in one array  in case of express3
+                var routes = _.flatten(app.routes);
+            }
+            else {
+                // Extract all API routes in one array  in case of express4
+                var arr = [];
+                _.each(app._router.stack, function (route) {
+                    if (!_.isUndefined(route.route)) {
+                        route.route.method = Object.keys(route.route.methods).toString();
+                        arr.push(route.route);
+                    }
+                });
+                routes = arr;
+            }
             // Group routes by resource name
             routes = _.groupBy(routes, function (route) {
                 return route.path.split("/")[1];
@@ -19,6 +32,7 @@ module.exports = function (app, mongoose) {
 
             // Transform route groups object to an array of group/routes pairs
             routes = _.pairs(routes);
+
             var schemas;
 
             if (mongoose)
@@ -26,7 +40,7 @@ module.exports = function (app, mongoose) {
 
             res.send({routes: routes, schemas: schemas});
         } catch (e) {
-            res.send(400, e);
+            res.send(400,e);
         }
     });
 

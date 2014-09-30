@@ -7,8 +7,6 @@ express-mongoose-docs
 This module will take away the pain of writing API and Data Model documentation for your Express & Mongoose based REST API.
 It auto-generates API documentation from the code on runtime so the documentation always stays up to date.
 
-NOTE: This module does not yet support Express 4+.
-
 
 Installation
 --------------

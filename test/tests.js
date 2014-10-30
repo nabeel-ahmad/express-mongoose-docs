@@ -19,8 +19,11 @@ var baseURL = "http://localhost:5000";
 
 before(function (done) {
 
+    app.use('/v1', function() {});
     // Add sample routes and start express app
     app.get("/route1", function() {});
+
+    app.get("/v1/route2", function() {});
 
     app.listen(5000, done);
 });
@@ -51,7 +54,7 @@ describe("docs", function () {
                 if (err) return done(err);
 
                 res.body.should.have.property("routes");
-                res.body.routes.should.be.an.instanceOf(Array).with.length(1);
+                res.body.routes.should.be.an.instanceOf(Array).with.length(2);
                 res.body.routes[0][1][0].should.have.properties(["method", "path"]);
 
                 done();

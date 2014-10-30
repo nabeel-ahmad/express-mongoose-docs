@@ -18,6 +18,14 @@ module.exports = function (app, mongoose) {
                     if (!_.isUndefined(route.route)) {
                         route.route.method = Object.keys(route.route.methods).toString();
                         arr.push(route.route);
+                    } else if(route.handle.stack) {
+                        // Extract routes from middlewere installed Router
+                        _.each(route.handle.stack, function (route) {
+                            if (!_.isUndefined(route.route)) {
+                                route.route.method = Object.keys(route.route.methods).toString();
+                                arr.push(route.route);
+                            }
+                        });
                     }
                 });
                 routes = arr;

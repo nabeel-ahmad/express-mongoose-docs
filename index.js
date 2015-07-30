@@ -3,6 +3,18 @@ var express = require("express");
 
 module.exports = function (app, mongoose) {
 
+    function appendRoutes(route, arr) {
+        if (!_.isUndefined(route.route)) {
+            route.route.method = Object.keys(route.route.methods).toString();
+            arr.push(route.route);
+        } else if(route.handle.stack) {
+            // Extract routes from middlewere installed Router
+            console.log(route.handle.stack)
+            _.each(route.handle.stack, function (route) {
+                appendRoutes(route, arr);
+            });
+        }
+    }
 
     // Add an API endpoint to be used internally by this module
     app.get('/api-docs', function (req, res) {
@@ -13,20 +25,10 @@ module.exports = function (app, mongoose) {
             }
             else {
                 // Extract all API routes in one array  in case of express4
+                //console.log(app._router.stack);
                 var arr = [];
                 _.each(app._router.stack, function (route) {
-                    if (!_.isUndefined(route.route)) {
-                        route.route.method = Object.keys(route.route.methods).toString();
-                        arr.push(route.route);
-                    } else if(route.handle.stack) {
-                        // Extract routes from middlewere installed Router
-                        _.each(route.handle.stack, function (route) {
-                            if (!_.isUndefined(route.route)) {
-                                route.route.method = Object.keys(route.route.methods).toString();
-                                arr.push(route.route);
-                            }
-                        });
-                    }
+                    appendRoutes(route, arr);
                 });
                 routes = arr;
             }
